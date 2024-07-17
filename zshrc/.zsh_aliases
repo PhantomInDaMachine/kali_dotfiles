@@ -6,3 +6,6 @@ alias l='ls -CF'
 
 # Theme Selector
 alias themes="ls ~/.config/alacritty/themes/themes | fzf | xargs -I {} ln -sf ~/.config/alacritty/themes/themes/{} ~/.config/alacritty/current_theme.toml && echo "@@@" >> ~/.config/alacritty/alacritty.toml && sed -i '/@@@/d' ~/.config/alacritty/alacritty.toml"
+
+# clear
+alias c='clear'
