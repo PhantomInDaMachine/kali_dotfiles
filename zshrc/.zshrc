@@ -383,5 +383,7 @@ plugins=(git zsh-autosuggestions  zsh-autocomplete zsh-syntax-highlighting web-s
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ##################################
+source ~/zsh-aliases/aliases.zsh
+####
 
 eval "$(starship init zsh)"
