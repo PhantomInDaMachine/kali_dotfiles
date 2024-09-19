@@ -353,7 +353,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions  zsh-autocomplete zsh-syntax-highlighting web-search) #fast-syntax-highlighting 
+plugins=(git zsh-autosuggestions  zsh-autocomplete zsh-syntax-highlighting) #web-search fast-syntax-highlighting 
 
 # source $ZSH/oh-my-zsh.sh
 
