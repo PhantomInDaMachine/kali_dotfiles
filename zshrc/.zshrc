@@ -15,9 +15,12 @@ WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 # hide EOL sign ('%')
 PROMPT_EOL_MARK=""
 
+### Moved to zsh_aliases ###
 # configure key keybindings
 # bindkey -e                                        # emacs key bindings
-bindkey -v                                        # vim key bindings
+# bindkey -v                                        # vim key bindings
+# bindkey -M viins 'kj' vi-cmd-mode                 # Bind ESC to 'kj'
+############################
 bindkey ' ' magic-space                           # do history expansion on space
 bindkey '^U' backward-kill-line                   # ctrl + U
 bindkey '^[[3;5~' kill-word                       # ctrl + Supr
@@ -257,13 +260,6 @@ if [ -x /usr/bin/dircolors ]; then
     zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
-# aliases
-source ~/.zsh_aliases
-# some more ls aliases
-# alias ll='ls -l'
-# alias la='ls -A'
-# alias l='ls -CF'
-
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -285,7 +281,7 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -353,7 +349,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions  zsh-autocomplete zsh-syntax-highlighting) #web-search fast-syntax-highlighting 
+
+#######
+# plugins=(git zsh-autosuggestions  zsh-autocomplete zsh-syntax-highlighting) #web-search fast-syntax-highlighting 
 
 # source $ZSH/oh-my-zsh.sh
 
@@ -384,7 +382,9 @@ plugins=(git zsh-autosuggestions  zsh-autocomplete zsh-syntax-highlighting) #web
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ##################################
-source ~/zsh-aliases/aliases.zsh
-####
+# aliases
+source ~/.zsh_aliases
+source ~/Jazz-aliases/Jazz.zsh
+##################################
 
 eval "$(starship init zsh)"
