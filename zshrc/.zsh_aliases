@@ -2,7 +2,7 @@
 # configure key keybindings
 # bindkey -e                                        # emacs key bindings
 bindkey -v                                        # vim key bindings
-bindkey -M viins 'jj' vi-cmd-mode                 # Bind ESC to 'kj'
+bindkey -M viins 'jj' vi-cmd-mode                 # Bind ESC to 'jj'
 
 # ls aliases
 alias ll='ls -l'
