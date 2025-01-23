@@ -17,3 +17,30 @@ alias c='clear'
 
 # Copy to clipboad
 alias yank='xclip -sel clip'
+
+#
+alias nmap='grc nmap'
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix"
+
+export FZF_DEFAULT_OPTS="--height 70% --layout=reverse --border --color=hl:#2dd4bf"
+
+# fzf default for tmux
+#export FZF_TMUX_OPTS=" -p100%,100% "
+
+# setup fzf previews
+
+# pwd without nano
+#export FZF_CTRL_T_OPTS="--preview 'batcat --color=always -n --line-range :500 {}'"
+
+# open with nvim
+export FZF_CTRL_T_OPTS="--preview 'batcat --color=always -n --line-range :500 {}' --bind 'enter:execute(nvim {})'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+ 
+# Use batcat to display readable files, eza to display directories and file otherwise
+alias fzfp="fzf --preview '([[ -r {} && ! -d {} ]] && (file --mime-type -b {} | grep -qE '\''^(text|application/(x-shellscript|json|xml|javascript))'\'' && batcat --color=always --terminal-width $(tput cols) -n --line-range :500 {} || file {} | cut -d: -f2) || ([[ -d {} ]] && eza --tree --color=always {} | head -200 || file {} | cut -d: -f2))'"
