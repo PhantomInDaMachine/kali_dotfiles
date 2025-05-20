@@ -1,4 +1,4 @@
-import = [
+general.import = [
     "~/.config/alacritty/current_theme.toml"
 ]
 # import = [
@@ -7,7 +7,7 @@ import = [
 # alt_send_esc = true
 # dynamic_title = true
 # enable_experimental_conpty_backend = false
-live_config_reload = true
+general.live_config_reload = true
 # tabspaces = 8
 # "window.opacity" = 1.0
 
@@ -28,7 +28,7 @@ style = "Block"
 unfocused_hollow = true
 
 [font]
-size = 16.0
+size = 9.0
 # use_thin_strokes = true
 
 [font.bold]

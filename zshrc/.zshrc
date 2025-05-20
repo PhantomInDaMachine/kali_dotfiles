@@ -278,7 +278,7 @@ if [ -f /etc/zsh_command_not_found ]; then
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 # export ZSH="$HOME/.oh-my-zsh"
@@ -381,10 +381,15 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+autoload bashcompinit
+bashcompinit
+
 ##################################
 # aliases
 source ~/.zsh_aliases
 source ~/Jazz-aliases/Jazz.zsh
 ##################################
+
+eval "$(zoxide init --cmd cd zsh)"
 
 eval "$(starship init zsh)"
