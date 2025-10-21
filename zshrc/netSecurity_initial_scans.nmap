@@ -1,4 +1,0 @@
-# Nmap 7.95 scan initiated Thu Jan 23 21:13:33 2025 as: /usr/lib/nmap/nmap --privileged -sV -v -T4 -oA netSecurity_initial_scans 10.10.215.53
-Nmap scan report for 10.10.215.53 [host down]
-Read data files from: /usr/share/nmap
-# Nmap done at Thu Jan 23 21:13:35 2025 -- 1 IP address (0 hosts up) scanned in 2.30 seconds
