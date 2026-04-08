@@ -1,3 +1,6 @@
-nvim/.config/nvim
+nvim/.config/nvim/.stylua.toml
+nvim/.config/nvim/.ignore
+nvim/.config/nvim/init.lua
+nvim/.config/nvim/lazy-lock.json
 tmux/.tmux/
 vim/.vim

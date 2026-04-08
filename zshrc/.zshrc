@@ -393,3 +393,8 @@ source ~/Jazz-aliases/Jazz.zsh
 eval "$(zoxide init --cmd cd zsh)"
 
 eval "$(starship init zsh)"
+
+# >>> Added by Spyder >>>
+alias spyder=/home/myname/.local/spyder-6/envs/spyder-runtime/bin/spyder
+alias uninstall-spyder=/home/myname/.local/spyder-6/uninstall-spyder.sh
+# <<< Added by Spyder <<<
