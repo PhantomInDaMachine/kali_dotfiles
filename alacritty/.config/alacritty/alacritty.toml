@@ -574,7 +574,8 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 decorations = "full"
 dynamic_padding = true
-opacity = 0.4
+# opacity = 0.4
+opacity = 1.0
 
 [window.dimensions]
 columns = 0
@@ -583,3 +584,6 @@ lines = 0
 [window.padding]
 x = 12
 y = 12
+
+[debug]
+# render_timer = true
