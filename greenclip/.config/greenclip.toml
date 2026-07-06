@@ -2,9 +2,12 @@
   blacklisted_applications = []
   enable_image_support = true
   history_file = "/tmp/greenclip.history"
+  # history_file = "" # Disable history accross reboots 
   image_cache_directory = "/tmp/greenclip"
   max_history_length = 50
   max_selection_size_bytes = 0
-  static_history = ["StrinGhost/KaliGhost"]
+  static_history = [
+ '''¯\_(ツ)_/¯''',
+]
   trim_space_from_selection = true
   use_primary_selection_as_input = false

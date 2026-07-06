@@ -14,7 +14,16 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -show run"
+# bindsym $mod+d exec "rofi -show run"
+
+#Rofi clipboard
+bindsym Mod4+v exec --no-startup-id "~/.config/rofi/clipboard/launch.sh"
+
+# rofi App Menu
+bindsym $mod+d exec  --no-startup-id "~/.config/rofi/app-launcher/launch.sh"
+
+# Shutdown
+bindsym $mod+Escape exec --no-startup-id "~/.config/rofi/power/launch.sh"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -142,11 +151,17 @@ exec_always --no-startup-id sh ~/.fehbg
 exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # VM Clipboard Fix and Starts the shared clipboard service
-# exec_always --no-startup-id ~/.config/i3/clipboard_fix.sh
+exec_always --no-startup-id ~/.config/i3/clipboard_fix.sh
 
 # Start Polybar
 exec_always --no-startup-id killall polybar
-exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+# exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Clipse autostart listening
+exec_always --no-startup-id "greenclip clear"
+exec_always --no-startup-id killall greenclip
+exec_always --no-startup-id "greenclip daemon"
 
 # Resize Bindings
 bindsym $mod+Ctrl+Shift+Right resize shrink width 10 px or 10 ppt
