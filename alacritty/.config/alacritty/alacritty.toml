@@ -28,7 +28,7 @@ style = "Block"
 unfocused_hollow = true
 
 [font]
-size = 9.0
+size = 16.0
 # use_thin_strokes = true
 
 [font.bold]
@@ -574,8 +574,8 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 decorations = "full"
 dynamic_padding = true
-# opacity = 0.4
-opacity = 1.0
+opacity = 0.4
+# opacity = 1.0
 
 [window.dimensions]
 columns = 0
