@@ -22,6 +22,8 @@ alias themes="ls ~/.config/alacritty/themes/themes | fzf | xargs -I {} ln -sf ~/
 # clear
 alias c='clear'
 
+alias v='nvim'
+
 # Copy to clipboad
 alias yank='xclip -sel clip'
 
