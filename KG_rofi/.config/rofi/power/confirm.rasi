@@ -22,7 +22,7 @@ configuration {
     foreground:     #e0def4;
     selected:       rgba(245, 194, 231, 0.9);
 
-    font: "JetBrainsMono Nerd Font 24";
+    font: "Hack Nerd Font 24";
 }
 
 /*****----- Main Window -----*****/

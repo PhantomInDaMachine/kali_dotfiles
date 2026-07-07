@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-######################################################
-#  ____ ____ ____                                    #
-#    ╭━━━┳━━━╮  StrinGhost                           #
-#    ┃╭━╮┃╭━╮┃                                       #
-#    ┃╰━━┫┃╱╰╯  https://www.github.com/StrinGhost    #
-#    ╰━━╮┃┃╭━╮  https://www.reddit.com/u/StrinGhost  #
-#    ┃╰━╯┃╰┻━┃  https://x.com/StrinGhost             #
-#    ╰━━━┻━━━╯                                       #
-######################################################
-
 # Terminate already running bar instances
 # If all your bars have ipc enabled, you can use 
 polybar-msg cmd quit

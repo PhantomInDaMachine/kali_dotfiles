@@ -1,15 +1,5 @@
 #!/bin/bash
 
-######################################################
-#  ____ ____ ____                                    #
-#    ╭━━━┳━━━╮  StrinGhost                           #
-#    ┃╭━╮┃╭━╮┃                                       #
-#    ┃╰━━┫┃╱╰╯  https://www.github.com/StrinGhost    #
-#    ╰━━╮┃┃╭━╮  https://www.reddit.com/u/StrinGhost  #
-#    ┃╰━╯┃╰┻━┃  https://x.com/StrinGhost             #
-#    ╰━━━┻━━━╯                                       #
-######################################################
-
 # Current Theme
 dir="~/.config/rofi/power/"
 theme='config'
@@ -18,7 +8,7 @@ theme='config'
 uptime="`uptime -p | sed -e 's/up //g'`"
 
 # Options
-hibernate=''
+# hibernate=''
 shutdown='󰐥'
 reboot=''
 lock=''
@@ -30,7 +20,7 @@ no='󰯆'
 
 rofi_cmd() {
     rofi -dmenu \
-        -p "Goodbye ${USER}" \
+        -p "myname is ${USER}" \
         -mesg "Uptime: $uptime" \
         -theme ${dir}/${theme}.rasi
     }
@@ -49,8 +39,12 @@ confirm_exit() {
 }
 
 # Pass variables to rofi dmenu
+# run_rofi()  {
+   # echo -e "$reboot\n$lock\n$hibernate\n$logout\n$shutdown" | rofi_cmd
+# }
+#### commented out hibernate ####
 run_rofi()  {
-   echo -e "$reboot\n$lock\n$hibernate\n$logout\n$shutdown" | rofi_cmd
+   echo -e "$reboot\n$lock\n$logout\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -67,9 +61,9 @@ run_cmd() {
             mpc -q pause
             # amixer set Master mute
             systemctl suspend
-        elif [[ $1 == '--hibernate' ]]; then
-            mpc -q pause
-            systemctl hibernate
+        # elif [[ $1 == '--hibernate' ]]; then
+        #     mpc -q pause
+        #     systemctl hibernate
         elif [[ $1 == '--logout' ]]; then
             if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
                 openbox --exit
@@ -111,9 +105,9 @@ case ${chosen} in
     $suspend)
         run_cmd --suspend
         ;;
-    $hibernate)
-        run_cmd --hibernate
-        ;;
+    # $hibernate)
+    #     run_cmd --hibernate
+    #     ;;
     $logout)
         run_cmd --logout
         ;;
