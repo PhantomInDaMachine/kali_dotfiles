@@ -10,7 +10,8 @@ font pango:Hack Nerd Font Regular 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 #Rofi clipboard
 bindsym Mod4+v exec --no-startup-id "~/.config/rofi/clipboard/launch.sh"
