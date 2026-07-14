@@ -13,7 +13,7 @@ RED=$(tput setaf 203 bold)
 CYAN=$(tput setaf 6 bold)
 MAUVE="\e[38;2;203;166;247;1m"
 
-LOG_FILE='myname.out'
+LOG_FILE="$HOME/myname-install.log"
 BIN_PATH='/usr/local/bin'
 
 # Check if running as root
@@ -146,7 +146,7 @@ fi
 # GreenClip
 if [ ! -f "$BIN_PATH/greenclip" ]; then
     colorize_prompt "${CAT}" "Installing GreenClip..."
-    if cmd_exec wget -q -O /tmp/greenclip https://github.com/erebe/greenclip/releases/download/v4.2/greenclip; then
+    if cmd_exec wget -q -O /tmp/greenclip https://github.com/erebe/greenclip/releases/download/v4.3.1/greenclip; then
         chmod +x /tmp/greenclip
         sudo mv /tmp/greenclip "$BIN_PATH/greenclip"
         colorize_prompt "${OK}" "GreenClip installed successfully."
@@ -165,9 +165,11 @@ fi
 
 # Backup existing .zshrc if it exists
 if [ -f "$HOME/.zshrc" ]; then
-  colorize_prompt "${WARN}" "Existing .zshrc found. Backing up to .zshrc.original..."
-  mv "$HOME/.zshrc" "$HOME/.zshrc.original"
-fi
+  # Create a timestamped backup to avoid overwriting previous backups
+  BACKUP_NAME="$HOME/.zshrc.original.$(date +%F-%H%M)"
+  colorize_prompt "${WARN}" "Existing .zshrc found. Backing up to $(basename "$BACKUP_NAME")..."
+  mv "$HOME/.zshrc" "$BACKUP_NAME"
+fi   
 
 # Stow zshrc
 if ! stow -S -t "$HOME" zshrc; then
@@ -178,8 +180,15 @@ fi
 mkdir -p ~/Pictures/screenshots #FlameShot
 
 # Configure Betterlockscreen 
-colorize_prompt "${CAT}"  "Configuring betterlockscreen..."
-cmd_exec betterlockscreen -u ~/.wallpaper/galaxy-night-view.jpg
+colorize_prompt "${CAT}" "Configuring betterlockscreen..."
+WALLPAPER_PATH="$HOME/.wallpaper/galaxy-night-view.jpg"
+
+if [ -f "$WALLPAPER_PATH" ]; then
+    cmd_exec betterlockscreen -u "$WALLPAPER_PATH"
+else
+    colorize_prompt "${WARN}" "Wallpaper not found at '$WALLPAPER_PATH'. Skipping betterlockscreen config."
+    colorize_prompt "${CAT}" "Tip: Run 'betterlockscreen -u /path/to/image.jpg' manually later."
+fi   
 
 # Final cleanup and reboot prompt
 cmd_exec sudo apt autoremove -y
