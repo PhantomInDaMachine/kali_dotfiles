@@ -146,7 +146,7 @@ fi
 # GreenClip
 if [ ! -f "$BIN_PATH/greenclip" ]; then
     colorize_prompt "${CAT}" "Installing GreenClip..."
-    if cmd_exec wget -q -O /tmp/greenclip https://github.com/erebe/greenclip/releases/download/v4.3.1/greenclip; then
+    if cmd_exec wget -q -O /tmp/greenclip https://github.com/erebe/greenclip/releases/download/v4.2/greenclip; then
         chmod +x /tmp/greenclip
         sudo mv /tmp/greenclip "$BIN_PATH/greenclip"
         colorize_prompt "${OK}" "GreenClip installed successfully."
