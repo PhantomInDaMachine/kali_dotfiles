@@ -1,4 +1,6 @@
-#!/bin/bash set -euo pipefail
+#!/bin/bash 
+
+set -euo pipefail
 
 # Colors
 OK="$(tput setaf 2 bold)[OK]"
@@ -100,10 +102,46 @@ cmd_exec sudo apt-get install -y \
   tmux \
   ripgrep \
   xclip \
+  tar \
   eza \
-  starship \
   neovim \
   qbittorrent \
+
+# Install Hack Nerd Font
+colorize_prompt "${CAT}" "Installing Hack Nerd Font..."
+FONT_DIR="$HOME/.local/share/fonts"
+FONT_NAME="Hack"
+
+# Create font directory if it doesn't exist
+mkdir -p "$FONT_DIR"
+
+# Download and extract directly into the font directory
+# Using -C to extract directly to the target folder
+if curl -sSL "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${FONT_NAME}.tar.xz" | tar -xJ -C "$FONT_DIR"; then
+    # Refresh font cache
+    fc-cache -fv > /dev/null 2>&1
+    colorize_prompt "${OK}" "Hack Nerd Font installed successfully."
+else
+    colorize_prompt "${ERROR}" "Failed to download/install Hack Nerd Font."
+    # Don't exit here, just warn, as the script can still run
+fi   
+
+# Install Starship Prompt
+colorize_prompt "${CAT}" "Installing Starship prompt..."
+if ! command -v starship &> /dev/null; then
+    # -y flag makes it non-interactive (auto-confirm)
+    curl -sS https://starship.rs/install.sh | sh -s -- -y
+    colorize_prompt "${OK}" "Starship installed."
+else
+    colorize_prompt "${OK}" "Starship already installed."
+fi
+
+# Ensure starship is initialized in the correct shell config
+# If you primarily use bash, change ~/.zshrc to ~/.bashrc
+if ! grep -q "starship init" "$HOME/.zshrc" 2>/dev/null; then
+    echo 'eval "$(starship init zsh)"' >> "$HOME/.zshrc"
+    colorize_prompt "${CAT}" "Added starship init to ~/.zshrc"
+fi   
 
 # GreenClip
 if [ ! -f "$BIN_PATH/greenclip" ]; then
@@ -120,9 +158,21 @@ fi
 
 # Dotfiles and scripts
 colorize_prompt "${CAT}" "Copying configuration files..."
-if ! stow -S -t $HOME alacritty kitty fehbg i3 picom KG_rofi KG_polybar wallpaper starship tmux zshrc Jazzpizazz greenclip nvchad; then
+if ! stow -S -t $HOME alacritty kitty fehbg i3 picom KG_rofi KG_polybar wallpaper starship tmux Jazzpizazz greenclip nvchad; then
     colorize_prompt "${ERROR}" "Stow failed. Check that all directories exist."
     exit 1
+fi   
+
+# Backup existing .zshrc if it exists
+if [ -f "$HOME/.zshrc" ]; then
+  colorize_prompt "${WARN}" "Existing .zshrc found. Backing up to .zshrc.original..."
+  mv "$HOME/.zshrc" "$HOME/.zshrc.original"
+fi
+
+# Stow zshrc
+if ! stow -S -t "$HOME" zshrc; then
+  colorize_prompt "${ERROR}" "Stow failed for zshrc."
+  exit 1
 fi   
 
 mkdir -p ~/Pictures/screenshots #FlameShot
