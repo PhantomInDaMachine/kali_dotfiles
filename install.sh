@@ -158,7 +158,7 @@ fi
 
 # Dotfiles and scripts
 colorize_prompt "${CAT}" "Copying configuration files..."
-if ! stow -S -t $HOME alacritty kitty fehbg i3 picom KG_rofi KG_polybar wallpaper starship tmux Jazzpizazz greenclip nvchad; then
+if ! stow -S -t $HOME alacritty kitty fehbg i3 picom rofi polybar wallpaper starship tmux Jazzpizazz greenclip nvchad; then
     colorize_prompt "${ERROR}" "Stow failed. Check that all directories exist."
     exit 1
 fi   
